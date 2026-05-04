@@ -18,15 +18,13 @@
 
 <div class="yellow-bar">
   <button class="menu-btn" onclick="toggleMenu()">☰</button>
-  <div class="tabs"></div>
+
+  <div class="nav-buttons">
+    <button onclick="goAssessment()">Assessment</button>
+    <button onclick="printCOE()">Print</button>
+  </div>
 </div>
 
-<!-- BUTTONS -->
-<div class="tab-buttons">
-  <button onclick="showTab('coe')">COE</button>
-  <button onclick="goAssessment()">Assessment</button>
-  <button onclick="printCOE()">Print</button>
-</div>
 
 <!-- COE CONTENT -->
 <div id="coe">
@@ -80,6 +78,16 @@
     </thead>
     
     <tbody id="scheduleTable"></tbody>
+
+<tfoot>
+  <tr>
+    <td colspan="3" style="text-align:right; font-weight:bold;">
+      Total Units
+    </td>
+    <td id="totalUnits">0</td>
+    <td colspan="3"></td>
+  </tr>
+</tfoot>
   </table>
 
 </div>
