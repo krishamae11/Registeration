@@ -18,12 +18,12 @@
 
 <div class="yellow-bar">
   <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
+  <h3>Assessment</h3>
  
 
   <div class="tabs"></div>
 </div>
-  <button onclick="showTab('assessment')">Assessment</button>     
+   
 <!-- CONTENT -->
 <div id="assessment" class="tab-content">
 <div class="container">
@@ -48,7 +48,6 @@
 
   <p class="subtitle">Enrolled Subjects:</p>
 
- <!-- TABLE -->
 <table>
   <thead>
     <tr>
@@ -63,13 +62,22 @@
   </thead>
 
   <tbody id="scheduleTable"></tbody>
+
+  <!-- 👇 THIS IS THE FIX -->
+  <tfoot>
+    <tr>
+      <td colspan="3" style="text-align:right; font-weight:bold;">
+        Total Units:
+      </td>
+
+      <td style="font-weight:bold;">
+        <span id="totalUnits">0</span>
+      </td>
+
+      <td colspan="3"></td>
+    </tr>
+  </tfoot>
 </table>
-
-<!-- TOTAL UNITS (CORRECT POSITION) -->
-<div style="text-align:right; margin-top:10px; font-weight:bold;">
-  Total Units: <span id="totalUnits">0</span>
-</div>
-
 
 <div id="modalOverlay" class="overlay hidden">
   <div class="modal">
