@@ -1,0 +1,203 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f2f2f2;
+
+  padding-top: 140px; /* 👈 FIX OVERLAP */
+}
+/* =========================
+   TOP BAR (FIXED)
+========================= */
+.topbar {
+  background: #e6e6e6;
+  padding: 10px 20px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 2000;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-title img {
+  width: 60px;
+}
+
+/* =========================
+   YELLOW BAR (FIXED UNDER TOPBAR)
+========================= */
+.yellow-bar {
+  background: #f4c400;
+  padding: 8px 20px;
+
+  position: fixed;
+  top: 80px; /* 👈 adjust depending on topbar height */
+  left: 0;
+  width: 100%;
+
+  z-index: 1999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* =========================
+   MAIN CONTENT CONTAINER
+========================= */
+.container {
+  width: 90%;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* =========================
+   FILTER SECTION (FIXED LAYOUT)
+========================= */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+/* dropdown */
+select {
+  padding: 5px;
+}
+
+/* =========================
+   ENROLL BUTTON
+========================= */
+.enroll-btn {
+  background: #1dc331;
+  color: white;
+  padding: 6px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.enroll-btn:hover {
+  opacity: 0.85;
+}
+
+/* =========================
+   ENROLL MESSAGE
+========================= */
+.enroll-message {
+  color: blue;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* =========================
+   TABLE (CLEAN ALIGNMENT)
+========================= */
+ttable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: left; /* 👈 KEY FIX */
+}
+
+th, td {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  text-align: left; /* 👈 KEY FIX */
+}
+
+th {
+  background: #f0f0f0;
+  border-bottom: 2px solid #000;
+}
+
+/* =========================
+   MODAL OVERLAY (CENTER FIX)
+========================= */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* hidden state */
+.hidden {
+  display: none;
+}
+
+/* modal box */
+.modal {
+  background: #e6e6e6;
+  padding: 25px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* modal text */
+.modal-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* modal buttons */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.back-btn {
+  background: #d22c2c;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.done-btn {
+  background: #1dc331;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.container {
+  overflow-x: auto;
+}

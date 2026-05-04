@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>COE</title>
+<link rel="stylesheet" href="coe.css">
+</head>
+
+<body>
+
+<!-- ✅ MOVED HERE (inside body) -->
+<div class="topbar">
+  <div class="logo-title">
+    <img src="logo.png">
+    <h2>Partido State University</h2>
+  </div>
+</div>
+
+<div class="yellow-bar">
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <div class="tabs"></div>
+</div>
+
+<!-- BUTTONS -->
+<div class="tab-buttons">
+  <button onclick="showTab('coe')">COE</button>
+  <button onclick="goAssessment()">Assessment</button>
+  <button onclick="printCOE()">Print</button>
+</div>
+
+<!-- COE CONTENT -->
+<div id="coe">
+<div class="paper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="logo.png" class="logo left">
+
+    <div class="header-center">
+      <p>Republic of the Philippines</p>
+      <h2>Partido State University</h2>
+      <p>Goa, Camarines Sur</p>
+
+      <h3 class="title">CERTIFICATE OF ENROLLMENT</h3>
+      <p>Second Semester AY 2025-2026</p>
+    </div>
+
+    <img src="logo.png" class="logo right">
+  </div>
+
+ <div class="info">
+
+  <div class="left">
+    <p><b>Id No:</b> <span id="student_id"></span></p>
+    <p><b>Name:</b> <span id="First_name"></span></p>
+    <p><b>Course:</b> <span id="course"></span></p>
+    <p><b>Department:</b> <span id="department"></span></p>
+  </div>
+
+  <div class="right">
+    <p><b>Date Enrolled:</b> January 5, 2026</p>
+    <p><b>Year Level:</b> <span id="courseYear">2</span></p>
+  </div>
+
+</div>
+
+  <!-- TABLE -->
+  <table class="subjects">
+    <thead>
+      <tr>
+        <th style="width:8%">Code</th>
+        <th style="width:12%">Subject Code</th>
+        <th>Subject Description</th>
+        <th style="width:8%">Units</th>
+      
+        <th style="width:18%">Schedule</th>
+        <th style="width:12%">Instructor</th>
+        <th style="width:12%">Section</th>
+      </tr>
+    </thead>
+    
+    <tbody id="scheduleTable"></tbody>
+  </table>
+
+</div>
+</div>
+
+<!-- ✅ CORRECT WAY TO LOAD JS -->
+<script src="coe.js"></script>
+
+</body>
+</html>

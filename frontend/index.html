@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assessment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="topbar">
+  <div class="logo-title">
+    <img src="logo.png">
+    <h2>Partido State University</h2>
+  </div>
+</div>
+
+<div class="yellow-bar">
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+ 
+
+  <div class="tabs"></div>
+</div>
+  <button onclick="showTab('assessment')">Assessment</button>     
+<!-- CONTENT -->
+<div id="assessment" class="tab-content">
+<div class="container">
+
+  
+  <!-- FILTERS -->
+  <div class="filters">
+    <label>Period</label>
+    <select id="period">
+      <option>Second Semester AY 2025-2026</option>
+    </select>
+
+    <span>Course & Year: <b id="courseYear"></b></span>
+    <span>Dept: <b id="department"></b></span>
+    <span>Sex: <b id="sex"></b></span>
+    <span>Validated: <b id="validated"></b></span>
+
+    <button id="actionBtn" class="enroll-btn" onclick="handleEnroll()">Enroll</button>
+  </div>
+
+  <p id="enrollMessage" class="enroll-message"></p>
+
+  <p class="subtitle">Enrolled Subjects:</p>
+
+ <!-- TABLE -->
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>Units</th>
+      <th>Schedule</th>
+      <th>Instructor</th>
+      <th>Section</th>
+    </tr>
+  </thead>
+
+  <tbody id="scheduleTable"></tbody>
+</table>
+
+<!-- TOTAL UNITS (CORRECT POSITION) -->
+<div style="text-align:right; margin-top:10px; font-weight:bold;">
+  Total Units: <span id="totalUnits">0</span>
+</div>
+
+
+<div id="modalOverlay" class="overlay hidden">
+  <div class="modal">
+    <p class="modal-text"> <b>Enrolled Successfully!</b> <br> You may now proceed to the COE page.</p>
+
+    <div class="modal-buttons">
+      <button class="back-btn" onclick="goBack()">Back</button>
+      <button class="done-btn" onclick="confirmEnroll()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

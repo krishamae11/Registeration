@@ -1,0 +1,217 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Times New Roman", serif;
+  margin: 0;
+  background: #fff;
+  padding-top: 140px; /* space for fixed header */
+}
+
+/* =========================
+   TOP BAR (FIXED)
+========================= */
+.topbar {
+  background: #e6e6e6;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-title img {
+  width: 60px;
+}
+
+/* =========================
+   YELLOW BAR (FIXED)
+========================= */
+.yellow-bar {
+  background: #f4c400;
+  padding: 8px 20px;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  z-index: 1999;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* =========================
+   PAPER (COE CONTAINER)
+========================= */
+.paper {
+  width: 90%;
+  max-width: 850px;
+  margin: 20px auto;
+  border: 1px solid black;
+  padding: 20px 25px;
+}
+
+/* =========================
+   HEADER INSIDE COE
+========================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.header-center {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.header-center h2 {
+  margin: 2px 0;
+  font-size: 20px;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* =========================
+   INFO SECTION (FIXED LAYOUT)
+========================= */
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 15px;
+}
+
+.info .left,
+.info .right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info p {
+  margin: 0;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* label alignment (ID, Name, Course etc.) */
+.info b {
+  display: inline-block;
+  width: 110px;
+}
+
+/* =========================
+   TABLE (FIXED)
+========================= */
+.subjects {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.subjects th,
+.subjects td {
+  border: 1px solid black;
+  padding: 4px 6px;
+}
+
+.subjects th {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* =========================
+   NOTE
+========================= */
+.note {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+/* =========================
+   SIGNATURE
+========================= */
+.signature {
+  text-align: center;
+  margin-top: 35px;
+}
+
+.signature .line {
+  width: 60%;
+  margin: auto;
+  border-top: 1px solid black;
+}
+
+.signature p {
+  font-size: 13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+.small {
+  font-size: 11px;
+}
+
+/* =========================
+   RESPONSIVE FIX
+========================= */
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 160px;
+  }
+
+  .paper {
+    padding: 15px;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .header-center h2 {
+    font-size: 16px;
+  }
+}
