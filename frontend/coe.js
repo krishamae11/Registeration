@@ -22,7 +22,7 @@ function toggleMenu() {
 // LOAD ADMISSION
 // =========================
 function loadAdmission() {
-  fetch("http://localhost:6969/api/admission/4")
+  fetch("http://localhost:6969/api/admission/2")
     .then(res => res.json())
     .then(data => {
 
@@ -59,7 +59,10 @@ function loadSchedule() {
       let table = document.getElementById("scheduleTable");
       table.innerHTML = "";
 
+      let total = 0;
+
       data.forEach(s => {
+
         table.innerHTML += `
           <tr>
             <td>${s.code}</td>
@@ -71,12 +74,15 @@ function loadSchedule() {
             <td>${s.section}</td>
           </tr>
         `;
+
+        total += Number(s.units || 0);
       });
+
+      document.getElementById("totalUnits").innerText = total;
 
     })
     .catch(err => console.log("SCHEDULE ERROR:", err));
 }
-
 
 // =========================
 // AUTO LOAD
