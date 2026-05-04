@@ -1,10 +1,15 @@
+/* =========================
+   GLOBAL BODY
+========================= */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f2f2f2;
 
-  padding-top: 140px; /* 👈 FIX OVERLAP */
+  /* prevents content hiding under fixed header */
+  padding-top: 140px;
 }
+
 /* =========================
    TOP BAR (FIXED)
 ========================= */
@@ -31,21 +36,24 @@ body {
 }
 
 /* =========================
-   YELLOW BAR (FIXED UNDER TOPBAR)
+   YELLOW BAR (FIXED)
 ========================= */
 .yellow-bar {
   background: #f4c400;
-  padding: 8px 20px;
+  padding: 10px 20px;
 
   position: fixed;
-  top: 80px; /* 👈 adjust depending on topbar height */
+  top: 80px;
   left: 0;
   width: 100%;
-
   z-index: 1999;
+
   display: flex;
   align-items: center;
   gap: 10px;
+
+  height: 40px;   /* 🔥 FIXED HEIGHT */
+  overflow: hidden;
 }
 
 .menu-btn {
@@ -56,7 +64,7 @@ body {
 }
 
 /* =========================
-   MAIN CONTENT CONTAINER
+   CONTAINER (ASSESSMENT)
 ========================= */
 .container {
   width: 90%;
@@ -64,10 +72,12 @@ body {
   background: white;
   padding: 20px;
   border-radius: 8px;
+
+  overflow-x: auto;
 }
 
 /* =========================
-   FILTER SECTION (FIXED LAYOUT)
+   FILTERS
 ========================= */
 .filters {
   display: flex;
@@ -78,13 +88,12 @@ body {
   margin-bottom: 15px;
 }
 
-/* dropdown */
 select {
   padding: 5px;
 }
 
 /* =========================
-   ENROLL BUTTON
+   BUTTON
 ========================= */
 .enroll-btn {
   background: #1dc331;
@@ -100,7 +109,7 @@ select {
 }
 
 /* =========================
-   ENROLL MESSAGE
+   MESSAGE
 ========================= */
 .enroll-message {
   color: blue;
@@ -111,20 +120,21 @@ select {
 }
 
 /* =========================
-   TABLE (CLEAN ALIGNMENT)
+   TABLE (FIXED ALIGNMENT)
 ========================= */
-ttable {
+table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
   margin-top: 10px;
-  text-align: left; /* 👈 KEY FIX */
+  text-align: left;
 }
 
 th, td {
   border-bottom: 1px solid #ccc;
   padding: 8px;
-  text-align: left; /* 👈 KEY FIX */
+  text-align: left;
+  vertical-align: middle;
 }
 
 th {
@@ -133,7 +143,7 @@ th {
 }
 
 /* =========================
-   MODAL OVERLAY (CENTER FIX)
+   MODAL
 ========================= */
 .overlay {
   position: fixed;
@@ -148,12 +158,10 @@ th {
   align-items: center;
 }
 
-/* hidden state */
 .hidden {
   display: none;
 }
 
-/* modal box */
 .modal {
   background: #e6e6e6;
   padding: 25px 40px;
@@ -162,13 +170,11 @@ th {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* modal text */
 .modal-text {
   font-size: 18px;
   margin-bottom: 20px;
 }
 
-/* modal buttons */
 .modal-buttons {
   display: flex;
   justify-content: center;
@@ -192,12 +198,88 @@ th {
   border-radius: 6px;
   cursor: pointer;
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+
+/* =========================
+   COE PAPER
+========================= */
+.paper {
+  width: 90%;
+  max-width: 850px;
+  margin: 20px auto;
+  border: 1px solid black;
+  padding: 20px 25px;
+  background: white;
+  box-sizing: border-box;
 }
 
-.container {
-  overflow-x: auto;
+/* =========================
+   HEADER COE
+========================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.header-center {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* =========================
+   INFO (FIXED ALIGNMENT)
+========================= */
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 15px;
+  font-size: 14px;
+  gap: 40px;
+}
+
+.info .left,
+.info .right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info span,
+.info p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 160px;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .paper {
+    padding: 15px;
+  }
 }
