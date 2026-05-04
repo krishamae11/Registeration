@@ -18,6 +18,7 @@ body {
 .topbar {
   background: #e6e6e6;
   padding: 10px 20px;
+
   position: fixed;
   top: 0;
   left: 0;
@@ -36,23 +37,76 @@ body {
 }
 
 /* =========================
-   YELLOW BAR (FIXED)
+   YELLOW BAR (NAV BAR)
 ========================= */
 .yellow-bar {
   background: #f4c400;
-  padding: 8px 20px;
+
   position: fixed;
   top: 80px;
   left: 0;
   width: 100%;
   z-index: 1999;
+
+  display: flex;
+  align-items: center;       /* vertical center fix */
+  justify-content: space-between;
+
+  padding: 15px 20px;        /* slightly bigger padding fixes “too high” look */
 }
 
+/* menu button (left) */
 .menu-btn {
   background: none;
+  color: black;
+
+  padding: 0;
   border: none;
-  font-size: 20px;
+
+  font-size: 22px;
   cursor: pointer;
+}
+
+/* right side nav buttons */
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  margin-top: 2px;  /* 👈 fixes “slightly up” issue */
+}
+
+/* =========================
+   NAV BUTTONS (TEXT ONLY FIX)
+========================= */
+.nav-buttons button {
+  all: unset;
+  font-family: inherit;
+
+  background: rgb(2, 2, 116);   /* green like Enroll */
+  color: white;
+
+  padding: 6px 15px;
+  border-radius: 5px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* hover effect */
+.nav-buttons button:hover {
+  background: rgb(4, 4, 214);   /* darker green */
+  text-decoration: none;
+}
+
+/* remove focus box */
+.nav-buttons button:focus,
+.nav-buttons button:active {
+  outline: none;
+  box-shadow: none;
 }
 
 /* =========================
@@ -97,7 +151,7 @@ body {
 }
 
 /* =========================
-   INFO SECTION (FIXED LAYOUT)
+   INFO SECTION
 ========================= */
 .info {
   display: flex;
@@ -116,20 +170,16 @@ body {
 
 .info p {
   margin: 0;
-  display: flex;
-  gap: 5px;
-  align-items: center;
   white-space: nowrap;
 }
 
-/* label alignment (ID, Name, Course etc.) */
 .info b {
   display: inline-block;
   width: 110px;
 }
 
 /* =========================
-   TABLE (FIXED)
+   TABLE
 ========================= */
 .subjects {
   width: 100%;
@@ -149,69 +199,26 @@ body {
   font-weight: bold;
 }
 
-/* =========================
-   NOTE
-========================= */
-.note {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 13px;
-}
+@media print {
 
-/* =========================
-   SIGNATURE
-========================= */
-.signature {
-  text-align: center;
-  margin-top: 35px;
-}
-
-.signature .line {
-  width: 60%;
-  margin: auto;
-  border-top: 1px solid black;
-}
-
-.signature p {
-  font-size: 13px;
-}
-
-/* =========================
-   FOOTER
-========================= */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  font-size: 12px;
-}
-
-.small {
-  font-size: 11px;
-}
-
-/* =========================
-   RESPONSIVE FIX
-========================= */
-@media (max-width: 768px) {
-
-  body {
-    padding-top: 160px;
+  body * {
+    visibility: hidden;   /* hide everything */
   }
 
-  .paper {
-    padding: 15px;
+  #coe, #coe * {
+    visibility: visible;  /* show only COE */
   }
 
-  .info {
-    flex-direction: column;
+  #coe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
 
-  .logo {
-    width: 70px;
-  }
-
-  .header-center h2 {
-    font-size: 16px;
+  .yellow-bar,
+  .topbar,
+  .nav-buttons {
+    display: none !important;
   }
 }
