@@ -4,7 +4,7 @@ window.onload = function () {
 };
 
 function loadAdmission() {
-  fetch("http://localhost:6969/api/admission/4")
+  fetch("http://localhost:6969/api/admission/2")
     .then(res => res.json())
     .then(data => {
 
