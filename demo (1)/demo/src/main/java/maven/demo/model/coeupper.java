@@ -1,4 +1,4 @@
-package maven.demo.model;
+package maven.demo.model;//coe_admin
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
