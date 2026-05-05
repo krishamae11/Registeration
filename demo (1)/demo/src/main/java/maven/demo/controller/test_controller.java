@@ -21,7 +21,7 @@ public class TestController {
 package maven.demo.controller;
 
 import maven.demo.model.User;
-import maven.demo.repository.userrepository;
+import maven.demo.repository.user_repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
@@ -32,7 +32,7 @@ import java.util.*;
 public class test_controller {
 
     @Autowired
-    private userrepository repo;
+    private user_repository repo;
 
     @GetMapping // your custom endpoint
     public List<User> getAllSchedules() {
