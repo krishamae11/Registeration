@@ -29,7 +29,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/schedule")
 @CrossOrigin(origins = "*")
-public class TestController {
+public class test_controller {
 
     @Autowired
     private userrepository repo;
