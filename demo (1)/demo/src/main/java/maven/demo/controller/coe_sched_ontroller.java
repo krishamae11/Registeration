@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/coe")
+@RequestMapping("/api/studentsched")
 @CrossOrigin(origins = "*")
 public class coe_sched_controller {
 
