@@ -1,6 +1,6 @@
 package maven.demo.controller;
 
-import maven.demo.repository.admissionrepository;
+import maven.demo.repository.admission_repository;
 import maven.demo.model.admission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class admission_controller {
 
     @Autowired
-    private admissionrepository repo;
+    private admission_repository repo;
 
     @GetMapping("/{id}")
     public admission getAdmission(@PathVariable Long id) {
