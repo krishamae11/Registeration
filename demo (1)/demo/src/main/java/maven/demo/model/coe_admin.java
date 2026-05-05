@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "admission")
-public class coe_upper {
+public class coe_admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
