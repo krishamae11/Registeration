@@ -6,7 +6,7 @@ function showTab(tabId) {
 }
 
 function goAssessment() {
-  window.location.href = "index.html";
+  window.location.href = "assessment.html";
 }
 
 function printCOE() {
