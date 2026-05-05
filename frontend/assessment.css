@@ -283,3 +283,24 @@ th {
     padding: 15px;
   }
 }
+.subject-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.subtitle {
+  margin: 0;
+  font-weight: bold;
+}
+
+.period-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#enrollMessage {
+  text-align: center;
+}
