@@ -43,6 +43,8 @@ function loadAdmission() {
       document.getElementById("department").innerText =
         data.department ?? "";
 
+      document.getElementById("courseYear").innerText = data.yearLevel ?? "";
+
     })
     .catch(err => console.log("ADMISSION ERROR:", err));
 }
