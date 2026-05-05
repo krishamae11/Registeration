@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/admission")
 @CrossOrigin(origins = "*")
-public class AdmissionController {
+public class admission_controller {
 
     @Autowired
     private admissionrepository repo;
