@@ -1,4 +1,4 @@
-package maven.demo.model;
+package maven.demo.model;//sched_assess
 
 /*import jakarta.persistence.*;
 
