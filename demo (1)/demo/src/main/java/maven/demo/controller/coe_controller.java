@@ -20,7 +20,7 @@ public class TestController {
 };*/
 package maven.demo.controller;
 
-import maven.demo.repository.coerepository;
+import maven.demo.repository.coe_repository;
 import maven.demo.model.coe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +29,10 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/coe")
 @CrossOrigin(origins = "*")
-public class coecontroller {
+public class coe_controller {
 
     @Autowired
-    private coerepository repo;
+    private coe_repository repo;
 
     @GetMapping // your custom endpoint
     public List<coe> getAllSchedules() {
