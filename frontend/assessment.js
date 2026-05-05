@@ -8,19 +8,23 @@ function loadAdmission() {
     .then(res => res.json())
     .then(data => {
 
-      const sex = document.getElementById("sex");
-      const department = document.getElementById("department");
-      const validated = document.getElementById("validated");
-      const courseYear = document.getElementById("courseYear");
+      console.log("API DATA:", data);
 
-      if (sex) sex.innerText = data.sex;
-      if (department) department.innerText = data.department;
+      // always safe check
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = value ?? "";
+      };
 
-      if (validated)
-        validated.innerText = data.validated ? "Yes" : "No";
+      setText("student_id", data.id);
+      setText("First_name", `${data.firstName ?? ""} ${data.lastName ?? ""}`);
 
-      if (courseYear)
-        courseYear.innerText = data.section;
+      setText("course", data.program);          
+      setText("department", data.department);
+      setText("courseYear", data.yearLevel);   
+      setText("sex", data.sex);
+      setText("validated", data.validated ? "Yes" : "No");
+
     })
     .catch(err => console.log("ADMISSION ERROR:", err));
 }
