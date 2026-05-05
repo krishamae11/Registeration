@@ -54,6 +54,8 @@ public class sched_assess {
     private String schedule;
     private String instructor;
     private String section;
+    private String academicyear;
+    private String sem;
 
     // getters and setters
 
@@ -65,6 +67,9 @@ public class sched_assess {
     public String getSchedule() { return schedule; }
     public String getDescription() { return description; }
     public Double getUnits() { return units; }
+    public String getAcademicyear() { return academicyear; }
+    public void setAcademicyear(String academicyear) { this.academicyear = academicyear; }
+
 
     public void setId(int id) { this.id = id; }
     public void setCode(String code) { this.code = code; }
@@ -74,5 +79,8 @@ public class sched_assess {
     public void setSchedule(String schedule) { this.schedule = schedule; }
     public void setInstructor(String instructor) { this.instructor = instructor; }
     public void setSection(String section) { this.section = section; }
+
+    public String getSem() { return sem; }
+    public void setSem(String sem) { this.sem = sem; }
 }
 
