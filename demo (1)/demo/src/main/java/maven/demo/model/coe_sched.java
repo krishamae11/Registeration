@@ -41,7 +41,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "student_schedule")
-public class coe {
+public class coe_sched {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
