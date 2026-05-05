@@ -4,7 +4,7 @@ package maven.demo.model;//sched_assess
 
 @Entity
 @Table(name = "admission")
-public class User {
+public class sched_assess {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +41,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "student_schedule")
-public class User {
+public class sched_assess {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
