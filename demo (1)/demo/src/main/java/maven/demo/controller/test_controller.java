@@ -20,7 +20,7 @@ public class TestController {
 };*/
 package maven.demo.controller;
 
-import maven.demo.model.User;
+import maven.demo.model.sched_assess;
 import maven.demo.repository.user_repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +29,13 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/schedule")
 @CrossOrigin(origins = "*")
-public class test_controller {
+public class sched_assess {
 
     @Autowired
     private user_repository repo;
 
     @GetMapping // your custom endpoint
-    public List<User> getAllSchedules() {
+    public List<sched_assess> getAllSchedules() {
         return repo.findAll();
     }
 }
