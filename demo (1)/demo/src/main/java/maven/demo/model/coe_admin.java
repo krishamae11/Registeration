@@ -11,27 +11,26 @@ public class coe_admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // ✅ ONLY JsonProperty (REMOVE @Column)
-    @JsonProperty("first_name")
+    @Column(name = "first_name")
     private String firstName;
 
-    @JsonProperty("last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     private String sex;
     private String department;
 
-    @JsonProperty("course")
+    @Column(name = "course")
     private String program;
 
     private String section;
 
-    @JsonProperty("year_level")
+    @Column(name = "year_level")
     private String yearLevel;
 
     private boolean validated;
 
-    // ===== GETTERS =====
+    // GETTERS
     public Long getId() { return id; }
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
@@ -42,7 +41,7 @@ public class coe_admin {
     public String getYearLevel() { return yearLevel; }
     public boolean isValidated() { return validated; }
 
-    // ===== SETTERS =====
+    // SETTERS
     public void setId(Long id) { this.id = id; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
@@ -52,4 +51,5 @@ public class coe_admin {
     public void setSection(String section) { this.section = section; }
     public void setYearLevel(String yearLevel) { this.yearLevel = yearLevel; }
     public void setValidated(boolean validated) { this.validated = validated; }
+}
 }
