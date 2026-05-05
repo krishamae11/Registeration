@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- HEADER -->
+<!--header-->
 <div class="topbar">
   <div class="logo-title">
     <img src="logo.png">
@@ -32,9 +32,7 @@
   <!-- FILTERS -->
   <div class="filters">
     <label>Period</label>
-    <select id="period">
-      <option>Second Semester AY 2025-2026</option>
-    </select>
+    <span>Name: <b id="First_name"></b></span>
 
     <span>Course & Year: <b id="courseYear"></b></span>
     <span>Dept: <b id="department"></b></span>
@@ -48,18 +46,26 @@
 
   <p class="subtitle">Enrolled Subjects:</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Code</th>
-      <th>Subject</th>
-      <th>Description</th>
-      <th>Units</th>
-      <th>Schedule</th>
-      <th>Instructor</th>
-      <th>Section</th>
-    </tr>
-  </thead>
+ <div class="period-box">
+    <label>Period:</label>
+    <select id="period">
+      <option>Second Semester AY 2025-2026</option>
+    </select>
+  </div>
+</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Subject</th>
+        <th>Description</th>
+        <th>Units</th>
+        <th>Schedule</th>
+        <th>Instructor</th>
+        <th>Section</th>
+      </tr>
+    </thead>
   
       <tbody id="scheduleTable"></tbody>
   
