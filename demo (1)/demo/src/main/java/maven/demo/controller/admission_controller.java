@@ -1,7 +1,7 @@
 package maven.demo.controller;
 
 import maven.demo.repository.admission_repository;
-import maven.demo.model.admission;
+import maven.demo.model.admin_assess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
