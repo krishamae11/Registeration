@@ -1,7 +1,6 @@
-package maven.demo.model;//coe_admin
+package maven.demo.entity;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "admission")
@@ -20,8 +19,8 @@ public class coe_admin {
     private String sex;
     private String department;
 
-    @Column(name = "course")
-    private String program;
+    @Column(name = "program")
+    private String course;
 
     private String section;
 
@@ -30,26 +29,40 @@ public class coe_admin {
 
     private boolean validated;
 
-    // GETTERS
+    // Matching the column name exactly as you specified: "dateenrolled"
+    @Column(name = "dateenrolled")
+    private String dateEnrolled;
+
+    private String sem;
+
+    @Column(name = "academic_year")
+    private String academicyear;
+
+    // --- GETTERS ---
     public Long getId() { return id; }
     public String getFirstName() { return firstName; }
     public String getLastName() { return lastName; }
     public String getSex() { return sex; }
     public String getDepartment() { return department; }
-    public String getProgram() { return program; }
+    public String getCourse() { return course; }
     public String getSection() { return section; }
     public String getYearLevel() { return yearLevel; }
     public boolean isValidated() { return validated; }
+    public String getDateEnrolled() { return dateEnrolled; }
+    public String getSem() { return sem; }
+    public String getAcademicyear() { return academicyear; }
 
-    // SETTERS
+    // --- SETTERS ---
     public void setId(Long id) { this.id = id; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setSex(String sex) { this.sex = sex; }
     public void setDepartment(String department) { this.department = department; }
-    public void setProgram(String program) { this.program = program; }
+    public void setCourse(String course) { this.course = course; }
     public void setSection(String section) { this.section = section; }
     public void setYearLevel(String yearLevel) { this.yearLevel = yearLevel; }
     public void setValidated(boolean validated) { this.validated = validated; }
-}
+    public void setDateEnrolled(String dateEnrolled) { this.dateEnrolled = dateEnrolled; }
+    public void setSem(String sem) { this.sem = sem; }
+    public void setAcademicyear(String academicyear) { this.academicyear = academicyear; }
 }
