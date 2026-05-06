@@ -19,20 +19,26 @@ public class admission_controller {
     }
 
     @PutMapping("/{id}/validate")
-    public admin_assess validateStudent(@PathVariable Long id, @RequestBody admin_assess studentData) {
-        // 1. Find the student
+    public admin_assess validateStudent(@PathVariable Long id,
+                                        @RequestBody admin_assess studentData) {
+
+        // 🚨 1. BLOCK duplicate enrollment
+        if (repo.existsByIdAndValidatedTrue(id)) {
+            throw new RuntimeException("Student already enrolled!");
+        }
+
+        // 2. Find student
         admin_assess student = repo.findById(id).orElseThrow();
 
-        // 2. Set validated to true
+        // 3. Set validated
         student.setValidated(true);
 
-        // 3. 🔥 FIX: Get the date from the Request Body and save it!
-        // This 'studentData' comes from the JSON.stringify in your JS
+        // 4. Save date
         if (studentData.getDateEnrolled() != null) {
             student.setDateEnrolled(studentData.getDateEnrolled());
         }
 
-        // 4. Save the updated student back to the database
+        // 5. Save
         return repo.save(student);
     }
 }
