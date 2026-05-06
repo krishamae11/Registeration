@@ -21,13 +21,13 @@ public class TestController {
 package maven.demo.controller;
 
 import maven.demo.repository.coe_sched_repository;
-import maven.demo.model.coe_sched;
+import maven.demo.entity.coe_sched;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/studentsched")
+@RequestMapping("/api/coestudsched")
 @CrossOrigin(origins = "*")
 public class coe_sched_controller {
 
