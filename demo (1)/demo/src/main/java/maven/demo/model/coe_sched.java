@@ -1,4 +1,4 @@
-package maven.demo.model;//coe_sched
+package maven.demo.entity;
 
 /*import jakarta.persistence.*;
 
@@ -39,55 +39,42 @@ public class User {
 
 import jakarta.persistence.*;
 
+
+
 @Entity
-@Table(name = "student_sched")
+@Table(name = "student_schedule")
 public class coe_sched {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
-
-    private String sex;
-    private String department;
-
-    @Column(name = "course")
-    private String program;
-
+    private String code;
+    private String subject;
+    private String description;
+    private Double units;
+    private String schedule;
+    private String instructor;
     private String section;
 
-    @Column(name = "year_level")
-    private String yearLevel;
+    // getters and setters
 
-    private boolean validated;
-
-    // GETTERS
-    public Long getId() { return id; }
-    public String getFirstName() { return firstName; }
-    public String getLastName() { return lastName; }
-    public String getSex() { return sex; }
-    public String getDepartment() { return department; }
-    public String getProgram() { return program; }
+    public int getId() { return id; }
+    public String getCode() { return code; }
+    public String getSubject() { return subject; }
     public String getSection() { return section; }
-    public String getYearLevel() { return yearLevel; }
-    public boolean isValidated() { return validated; }
+    public String getInstructor() { return instructor; }
+    public String getSchedule() { return schedule; }
+    public String getDescription() { return description; }
+    public Double getUnits() { return units; }
 
-    // SETTERS
-    public void setId(Long id) { this.id = id; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public void setSex(String sex) { this.sex = sex; }
-    public void setDepartment(String department) { this.department = department; }
-    public void setProgram(String program) { this.program = program; }
+    public void setId(int id) { this.id = id; }
+    public void setCode(String code) { this.code = code; }
+    public void setSubject(String subject) { this.subject = subject; }
+    public void setDescription(String description) { this.description = description; }
+    public void setUnits(Double units) { this.units = units; }
+    public void setSchedule(String schedule) { this.schedule = schedule; }
+    public void setInstructor(String instructor) { this.instructor = instructor; }
     public void setSection(String section) { this.section = section; }
-    public void setYearLevel(String yearLevel) { this.yearLevel = yearLevel; }
-    public void setValidated(boolean validated) { this.validated = validated; }
 }
-
-    
 
