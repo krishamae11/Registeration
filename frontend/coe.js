@@ -23,7 +23,7 @@ function toggleMenu() {
 // =========================
 function loadAdmission() {
   // Consistently using Student ID 15
-  fetch("http://localhost:6969/api/coestudentinfo/15")
+  fetch("http://localhost:6969/api/coestudentinfo/21")
     .then(res => res.json())
     .then(data => {
 
