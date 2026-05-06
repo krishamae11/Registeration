@@ -5,7 +5,111 @@
 <meta charset="UTF-8">
 <title>Assessment</title>
 <link rel="stylesheet" href="assessment.css">
+</head><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assessment</title>
+<link rel="stylesheet" href="assessment.css">
 </head>
+
+<body>
+
+<!--header-->
+<div class="topbar">
+  <div class="logo-title">
+    <img src="logo.png">
+    <h2>Partido State University</h2>
+  </div>
+</div>
+
+<div class="yellow-bar">
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <h3>Assessment</h3>
+  <div class="tabs"></div>
+</div>
+
+<!-- CONTENT -->
+<div id="assessment" class="tab-content">
+
+  <!-- ✅ WHITE CONTAINER (IMPORTANT) -->
+  <div class="container">
+
+    <!-- FILTERS -->
+    <div class="filters">
+
+      <!-- LEFT SIDE INFO -->
+      <div class="left-info">
+        <span>Name: <b id="First_name"></b></span>
+        <span>Course & Year: <b id="courseYear"></b></span>
+        <span>Dept: <b id="department"></b></span>
+        <span>Sex: <b id="sex"></b></span>
+        <span>Validated: <b id="validated"></b></span>
+      </div>
+
+      <!-- RIGHT SIDE BUTTON -->
+      <button id="actionBtn" class="enroll-btn" onclick="handleEnroll()">Enroll</button>
+
+    </div>
+
+    <p id="enrollMessage" class="enroll-message"></p>
+
+   <div class="subject-header">
+  <p class="subtitle">Enrolled Subjects:</p>
+  
+  <div class="period-box">
+    <label>Period:</label>
+    <select id="period">
+      <option>Loading...</option>
+    </select>
+  </div>
+</div>
+
+    <!-- TABLE (NOW INSIDE WHITE BOX ✅) -->
+    <table>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Subject</th>
+          <th>Description</th>
+          <th>Units</th>
+          <th>Schedule</th>
+          <th>Instructor</th>
+          <th>Section</th>
+        </tr>
+      </thead>
+
+      <tbody id="scheduleTable"></tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="3" style="text-align:right; font-weight:bold;">Total Units:</td>
+          <td style="font-weight:bold;"><span id="totalUnits">0</span></td>
+          <td colspan="3"></td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div> <!-- ✅ END CONTAINER -->
+
+</div>
+
+<!-- MODAL -->
+<div id="modalOverlay" class="overlay hidden">
+  <div class="modal">
+    <p class="modal-text"><b>Enrolled Successfully!</b><br>You may now proceed to the COE page.</p>
+
+    <div class="modal-buttons">
+      <button class="back-btn" onclick="goBack()">Back</button>
+      <button class="done-btn" onclick="confirmEnroll()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script src="assessment.js"></script>
+
+</body>
+</html>
 <body>
 
 <!--header-->
