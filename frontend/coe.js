@@ -14,7 +14,7 @@ function printCOE() {
 }
 
 function toggleMenu() {
-  console.log("Menu clicked"); // you can expand later
+  console.log("Menu clicked");
 }
 
 
@@ -22,28 +22,38 @@ function toggleMenu() {
 // LOAD ADMISSION
 // =========================
 function loadAdmission() {
-  fetch("http://localhost:6969/api/admission/2")
+  // Consistently using Student ID 15
+  fetch("http://localhost:6969/api/coestudentinfo/15")
     .then(res => res.json())
     .then(data => {
 
       console.log("API DATA:", data);
 
-      document.getElementById("student_id").innerText =
-        data.id ?? "";
+      // ID and Name
+      document.getElementById("student_id").innerText = data.id ?? "";
 
-      const first = data.first_name ?? data.firstName ?? "";
-      const last  = data.last_name ?? data.lastName ?? "";
+      const first = data.firstName ?? data.first_name ?? "";
+      const last  = data.lastName ?? data.last_name ?? "";
+      document.getElementById("First_name").innerText = `${first} ${last}`.trim();
 
-      document.getElementById("First_name").innerText =
-        `${first} ${last}`.trim();
-
-      document.getElementById("course").innerText =
-        data.course ?? data.program ?? "";
-
-      document.getElementById("department").innerText =
-        data.department ?? "";
-
+      // Program and Dept
+      document.getElementById("course").innerText = data.program ?? data.course ?? "";
+      document.getElementById("department").innerText = data.department ?? "";
       document.getElementById("courseYear").innerText = data.yearLevel ?? "";
+
+      // 1. DYNAMIC DATE ENROLLED
+      const dateField = document.getElementById("enrollmentDate");
+      if (dateField) {
+        // Matches the 'dateEnrolled' field in your Java Entity
+        dateField.innerText = data.dateEnrolled ?? "Not Yet Enrolled";
+      }
+
+      // 2. DYNAMIC PERIOD (NEW)
+      // This ensures the header also pulls from sem and academicyear columns
+      const periodField = document.getElementById("coePeriodDisplay");
+      if (periodField && data.sem && data.academicyear) {
+        periodField.innerText = `${data.sem} Semester AY ${data.academicyear}`;
+      }
 
     })
     .catch(err => console.log("ADMISSION ERROR:", err));
@@ -54,17 +64,17 @@ function loadAdmission() {
 // LOAD SCHEDULE
 // =========================
 function loadSchedule() {
-  fetch("http://localhost:6969/api/schedule")
+  fetch("http://localhost:6969/api/coestudsched")
     .then(res => res.json())
     .then(data => {
 
       let table = document.getElementById("scheduleTable");
+      if(!table) return;
       table.innerHTML = "";
 
       let total = 0;
 
       data.forEach(s => {
-
         table.innerHTML += `
           <tr>
             <td>${s.code}</td>
@@ -76,7 +86,6 @@ function loadSchedule() {
             <td>${s.section}</td>
           </tr>
         `;
-
         total += Number(s.units || 0);
       });
 
@@ -93,4 +102,3 @@ window.onload = function () {
   loadAdmission();
   loadSchedule();
 };
-
