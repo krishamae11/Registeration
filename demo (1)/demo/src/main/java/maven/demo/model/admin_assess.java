@@ -1,4 +1,4 @@
-package maven.demo.model;
+package maven.demo.entity;
 
 import jakarta.persistence.*;
 
@@ -26,9 +26,22 @@ public class admin_assess {
     @Column(name = "year_level")
     private String yearLevel;
 
-    @Column(name = "academic_year")
+    @Column(name = "academicyear")
     private String academicyear;
 
+    // Add this to your admin_assess.java entity
+    @Column(name = "dateenrolled")
+    private String dateEnrolled;
+
+    // 2. The Getter (used by COE page)
+    public String getDateEnrolled() {
+        return dateEnrolled;
+    }
+
+    // 3. The Setter (used by Assessment page)
+    public void setDateEnrolled(String dateEnrolled) {
+        this.dateEnrolled = dateEnrolled;
+    }
     private String sem;
 
     // GETTERS
