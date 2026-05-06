@@ -4,7 +4,7 @@ window.onload = function () {
 };
 
 function loadAdmission() {
-  fetch("http://localhost:6969/api/admission/15") // Using ID 15 consistently
+  fetch("http://localhost:6969/api/admission/21") // MAROBAYYYYYYYYYYYYY IGDIIIIIIIIIIII
     .then(res => res.json())
     .then(data => {
       console.log("API DATA:", data);
@@ -32,6 +32,21 @@ function loadAdmission() {
         
         periodSelect.innerHTML = `<option value="${periodText}">${periodText}</option>`;
       }
+
+            // ✅ CONDITION
+      const btn = document.getElementById("actionBtn");
+
+      if (data.validated === true) {
+        btn.textContent = "COE";
+        btn.className = "btn-coe";
+        btn.onclick = goToCOE;
+      } else {
+        btn.textContent = "Enroll";
+        btn.className = "btn-enroll";
+        btn.onclick = handleEnroll;
+      }
+
+
     })
     .catch(err => console.log("ADMISSION ERROR:", err));
 }
@@ -96,9 +111,9 @@ function handleEnroll() {
   }
 }
 
-// This handles the ACTUAL enrollment logic
+/// This handles the ACTUAL enrollment logic
 function confirmEnroll() {
-  const studentId = 15; // Set to 15 to match loadAdmission
+  const studentId = 21; // MARIBAAAYYYYYYYYYYYYYYYYYYYYYYYYYYYY IGDIIIIIIIIII
 
   const today = new Date().toLocaleDateString('en-US', { 
     month: 'long', 
@@ -106,61 +121,55 @@ function confirmEnroll() {
     year: 'numeric' 
   });
 
-  fetch(`http://localhost:6969/api/admission/${studentId}/validate`, {
+  // Sending the PUT request with the date in the body
+  fetch(`http://localhost:6969/api/official-student/${studentId}/validate`, {
     method: "PUT",
-    headers: {"Content-Type": "application/json"},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ 
       validated: true,
-      dateEnrolled: today 
+      dateEnrolled: today // Matches your Controller's studentData.getDateEnrolled()
     })
   })
-  .then(res => res.json())
   .then(data => {
-    console.log("SUCCESS:", data);
+    console.log("SUCCESS - Data saved to both tables:", data);
 
-    // Update Validated Status
+    // 1. Update UI: Validated Status
     const validatedField = document.getElementById("validated");
     if (validatedField) {
       validatedField.innerText = "Yes";
     }
 
-    // Update message
+    // 2. Update UI: Message
     const message = document.getElementById("enrollMessage");
     if (message) {
       message.innerText = "Student is OFFICIALLY Enrolled.";
+      message.style.color = "green"; // Added a little visual feedback
     }
 
-    // Change Enroll button to COE button
+    // 3. Update UI: Change Enroll button to COE button
     const btn = document.getElementById("actionBtn");
     if (btn) {
       btn.textContent = "COE";
-      btn.onclick = goToCOE;
+      btn.className = "btn-coe"; // You can style this in CSS
+      btn.onclick = goToCOE; 
     }
 
-    // Hide Modal
+    // 4. Close the Modal
     document.getElementById("modalOverlay")?.classList.add("hidden");
-    alert("Enrolled successfully on " + today);
+    
   })
   .catch(err => {
     console.error("ENROLL ERROR:", err);
-    alert("Failed to enroll student.");
+    alert("Failed to enroll student. Make sure the backend is running!");
   });
 }
 
-// Keeping original functions as requested
+// Opens the confirmation modal
 function saveData() {
   document.getElementById("modalOverlay")?.classList.remove("hidden");
 }
 
-function enrollStudent(id) {
-  const studentId = 15;
-  fetch(`http://localhost:6969/api/admission/${studentId}/validate`, {
-    method: "PUT"
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log("ENROLLED:", data);
-    alert("Student enrolled successfully!");
-  })
-  .catch(err => console.log("ENROLL ERROR:", err));
+// Helper to redirect to COE page
+function goToCOE() {
+  window.location.href = "coe.html";
 }
