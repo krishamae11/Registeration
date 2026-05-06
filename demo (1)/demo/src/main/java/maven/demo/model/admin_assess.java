@@ -26,7 +26,7 @@ public class admin_assess {
     @Column(name = "year_level")
     private String yearLevel;
 
-    @Column(name = "academicyear")
+    @Column(name = "academic_year")
     private String academicyear;
 
     // Add this to your admin_assess.java entity
