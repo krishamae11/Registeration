@@ -68,7 +68,7 @@ body {
 ========================= */
 .container {
   width: 90%;
-  margin: 20px auto;
+  margin: 20px auto; 
   background: white;
   padding: 20px;
   border-radius: 8px;
@@ -91,7 +91,7 @@ body {
 .left-info {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;/**/
   flex: 1;
 }
 
@@ -123,6 +123,15 @@ select {
 
 .enroll-btn:hover {
   opacity: 0.85;
+}
+
+.btn-coe {
+  background: #1dc331;
+  color: white;
+  padding: 6px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 /* =========================
@@ -198,7 +207,7 @@ th {
   gap: 20px;
 }
 
-.back-btn {
+.cancel-btn {
   background: #d22c2c;
   color: white;
   border: none;
@@ -207,7 +216,7 @@ th {
   cursor: pointer;
 }
 
-.done-btn {
+.proceed-btn {
   background: #1dc331;
   color: white;
   border: none;
