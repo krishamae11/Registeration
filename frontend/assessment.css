@@ -82,16 +82,31 @@ body {
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
+}
+
+.left-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  flex: 1;
+}
+
+.left-info span {
+  font-weight: bold;
+  min-width: 200px;
 }
 
 select {
   padding: 5px;
 }
 
+.left-info span b {
+  font-weight: normal;
+}
 /* =========================
    BUTTON
 ========================= */
@@ -102,6 +117,8 @@ select {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  margin: auto;
+  margin-left: auto;
 }
 
 .enroll-btn:hover {
@@ -295,12 +312,29 @@ th {
   font-weight: bold;
 }
 
-.period-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+
 
 #enrollMessage {
   text-align: center;
 }
+
+.subject-header {
+  display: flex;
+  justify-content: space-between; /* Pushes items to opposite sides */
+  align-items: center;           /* Keeps them level horizontally */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.period-box {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the "Period:" label and the dropdown */
+}
+
+.period-box select {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
