@@ -20,7 +20,7 @@ public class TestController {
 };*/
 package maven.demo.controller;
 
-import maven.demo.model.sched_assess;
+import maven.demo.entity.sched_assess;
 import maven.demo.repository.sched_repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
