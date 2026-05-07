@@ -4,7 +4,7 @@ window.onload = function () {
 };
 
 function loadAdmission() {
-  fetch("http://localhost:6969/api/admission/21") // MAROBAYYYYYYYYYYYYY IGDIIIIIIIIIIII
+  fetch("http://localhost:1234/api/admission/17") // MARIBAYYYYYYYYYYYYY IGDIIIIIIIIIIII
     .then(res => res.json())
     .then(data => {
       console.log("API DATA:", data);
@@ -15,7 +15,7 @@ function loadAdmission() {
       };
 
       setText("student_id", data.id);
-      setText("First_name", `${data.firstName ?? ""} ${data.lastName ?? ""}`);
+      setText("First_name", `${data.lastName ?? ""},  ${data.firstName ?? ""}`);
       setText("course", data.program);          
       setText("department", data.department);
       setText("courseYear", data.yearLevel);   
@@ -33,18 +33,35 @@ function loadAdmission() {
         periodSelect.innerHTML = `<option value="${periodText}">${periodText}</option>`;
       }
 
-            // ✅ CONDITION
-      const btn = document.getElementById("actionBtn");
+// ✅ CONDITION
+const btn = document.getElementById("actionBtn");
+const message = document.getElementById("enrollMessage");
 
-      if (data.validated === true) {
-        btn.textContent = "COE";
-        btn.className = "btn-coe";
-        btn.onclick = goToCOE;
-      } else {
-        btn.textContent = "Enroll";
-        btn.className = "btn-enroll";
-        btn.onclick = handleEnroll;
-      }
+if (data.validated === true) {
+
+  // PERMANENT MESSAGE
+  if (message) {
+    message.innerText = "Student is OFFICIALLY Enrolled.";
+    message.style.color = "green";
+  }
+
+  // CHANGE BUTTON TO COE
+  btn.textContent = "COE";
+  btn.className = "btn-coe";
+  btn.onclick = goToCOE;
+
+} else {
+
+  // REMOVE MESSAGE IF NOT VALIDATED
+  if (message) {
+    message.innerText = "";
+  }
+
+  // SHOW ENROLL BUTTON
+  btn.textContent = "Enroll";
+  btn.className = "enroll-btn";
+  btn.onclick = handleEnroll;
+}
 
 
     })
@@ -52,7 +69,7 @@ function loadAdmission() {
 }
 
 function loadSchedule() {
-  fetch("http://localhost:6969/api/schedule")
+  fetch("http://localhost:1234/api/schedule")
     .then(res => res.json())
     .then(data => {
       let table = document.getElementById("scheduleTable");
@@ -113,7 +130,7 @@ function handleEnroll() {
 
 /// This handles the ACTUAL enrollment logic
 function confirmEnroll() {
-  const studentId = 21; // MARIBAAAYYYYYYYYYYYYYYYYYYYYYYYYYYYY IGDIIIIIIIIII
+  const studentId = 17; // MARIBAAAYYYYYYYYYYYYYYYYYYYYYYYYYYYY IGDIIIIIIIIII
 
   const today = new Date().toLocaleDateString('en-US', { 
     month: 'long', 
@@ -122,7 +139,7 @@ function confirmEnroll() {
   });
 
   // Sending the PUT request with the date in the body
-  fetch(`http://localhost:6969/api/official-student/${studentId}/validate`, {
+  fetch(`http://localhost:1234/api/official-student/${studentId}/validate`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ 
