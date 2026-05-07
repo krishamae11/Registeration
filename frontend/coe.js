@@ -23,7 +23,7 @@ function toggleMenu() {
 // =========================
 function loadAdmission() {
   // Consistently using Student ID 15
-  fetch("http://localhost:6969/api/coestudentinfo/21")
+  fetch("http://localhost:1234/api/coestudentinfo/17")
     .then(res => res.json())
     .then(data => {
 
@@ -34,7 +34,7 @@ function loadAdmission() {
 
       const first = data.firstName ?? data.first_name ?? "";
       const last  = data.lastName ?? data.last_name ?? "";
-      document.getElementById("First_name").innerText = `${first} ${last}`.trim();
+      document.getElementById("First_name").innerText = `${last}, ${first}`.trim();
 
       // Program and Dept
       document.getElementById("course").innerText = data.program ?? data.course ?? "";
@@ -64,7 +64,7 @@ function loadAdmission() {
 // LOAD SCHEDULE
 // =========================
 function loadSchedule() {
-  fetch("http://localhost:6969/api/coestudsched")
+  fetch("http://localhost:1234/api/coestudsched")
     .then(res => res.json())
     .then(data => {
 
