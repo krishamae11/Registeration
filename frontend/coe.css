@@ -131,7 +131,8 @@ body {
 }
 
 .logo {
-  width: 100px;
+  width: 120px;
+  height: auto;
 }
 
 .header-center {
@@ -168,6 +169,10 @@ body {
   gap: 6px;
 }
 
+.info .right {
+  margin-right: 20px;
+}
+
 .info p {
   margin: 0;
   white-space: nowrap;
@@ -201,19 +206,33 @@ body {
 
 @media print {
 
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
   body * {
-    visibility: hidden;   /* hide everything */
+    visibility: hidden;
   }
 
   #coe, #coe * {
-    visibility: visible;  /* show only COE */
+    visibility: visible;
   }
 
   #coe {
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
     width: 100%;
+    max-width: 190mm;
+    margin: auto;
+    padding: 10px;
+    box-sizing: border-box;
+
+    font-size: 12px;   /* bigger text */
+  }
+
+  .subjects td,
+  .subjects th {
+    padding: 6px 8px;  /* bigger table spacing */
   }
 
   .yellow-bar,
