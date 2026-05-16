@@ -1,8 +1,8 @@
 package maven.demo.controller;
 
-import maven.demo.entity.admin_assess;
+import maven.demo.entity.data_entry; // Changed from admin_assess
 import maven.demo.entity.official_student;
-import maven.demo.repository.admission_repository;
+import maven.demo.repository.data_entry_repository; // Changed from admission_repository
 import maven.demo.repository.official_student_repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class official_student_controller {
 
     @Autowired
-    private admission_repository admissionRepo;
+    private data_entry_repository studentInfoRepo; // Using studentinfo repository
 
     @Autowired
     private official_student_repository officialRepo;
@@ -22,21 +22,21 @@ public class official_student_controller {
     // GET STUDENT BY ID
     // =========================
     @GetMapping("/{id}")
-    public admin_assess getStudentById(@PathVariable Long id) {
-        return admissionRepo.findById(id).orElse(null);
+    public data_entry getStudentById(@PathVariable Long id) {
+        return studentInfoRepo.findById(id).orElse(null);
     }
 
     // =========================
     // VALIDATE + MOVE TO OFFICIAL TABLE
     // =========================
     @PutMapping("/{id}/validate")
-    public admin_assess validateStudent(
+    public data_entry validateStudent(
             @PathVariable Long id,
-            @RequestBody(required = false) admin_assess studentData
+            @RequestBody(required = false) data_entry studentData
     ) {
 
-        // 1. FIND STUDENT IN ADMISSION TABLE
-        admin_assess student = admissionRepo.findById(id)
+        // 1. FIND STUDENT IN STUDENTINFO TABLE
+        data_entry student = studentInfoRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
 
         // 2. SET VALIDATED = TRUE
@@ -46,22 +46,24 @@ public class official_student_controller {
             student.setDateEnrolled(studentData.getDateEnrolled());
         }
 
-        // 3. SAVE UPDATED ADMISSION RECORD
-        admissionRepo.save(student);
+        // 3. SAVE UPDATED STUDENTINFO RECORD
+        studentInfoRepo.save(student);
 
         // 4. COPY TO OFFICIAL STUDENT TABLE
         official_student official = new official_student();
 
+        // Mapping fields from data_entry to official_student
         official.setFirstName(student.getFirstName());
         official.setLastName(student.getLastName());
-        official.setSex(student.getSex());
 
+        // Note: Map the fields based on your specific Entity getters
         official.setCourse(student.getProgram());
         official.setDepartment(student.getDepartment());
         official.setYearLevel(student.getYearLevel());
-        official.setSem(student.getSem());
-        official.setAcademicyear(student.getAcademicyear());
+        official.setSem(student.getSemester()); // data_entry uses getSemester()
+        official.setAcademicyear(student.getAcademicYear()); // data_entry uses getAcademicYear()
         official.setDateenrolled(student.getDateEnrolled());
+        official.setSection(student.getSection());
 
         officialRepo.save(official);
 
