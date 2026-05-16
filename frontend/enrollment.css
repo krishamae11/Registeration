@@ -1,0 +1,533 @@
+enrollment.css
+/*.form-container {
+  width: 60%;
+  margin: 20px auto;
+  background: white;
+  padding: 67px;
+  border-radius: 10px;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+}
+
+#enrollmentForm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  grid-column: 1 / -1;
+  padding: 12px;
+  border: none;
+  background: #1dc331;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+.table-section {
+  margin-top: 40px;
+}*/
+/* ===== FORM CONTAINER ===== */
+body {
+  margin: 0;
+  padding: 8;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+}
+
+/* ===== HEADER WRAPPER ===== */
+.header {
+  position: sticky;   /* stays at top while scrolling */
+  top: 10;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  background: #e6e6e6;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+}
+
+/* LOGO */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-title img {
+  width: 65px;
+  height: 65px;
+}
+
+/* ===== YELLOW/GREEN BAR ===== */
+.yellow-bar {
+  width: 100%;
+  background: #f4c400;
+  color: rgb(0, 0, 0);
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  z-index: 1999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.menu-btn {
+  background: transparent;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* ===== FORM CONTAINER ===== */
+.form-container {
+  width: 88%;
+  max-width: 1200px;
+  height: auto;
+
+  /* FIX SPACING */
+  margin: 35px auto 30px auto;
+
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+
+  position: relative;
+  z-index: 0;
+  box-sizing: border-box;
+}
+
+/* ===== TITLE ===== */
+.form-container h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #000000;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.form-container p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* ===== FORM GRID ===== */
+#enrollmentForm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+}
+
+/* ===== FORM GROUP ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== LABEL ===== */
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #1b1b1b;
+  font-size: 14px;
+}
+
+/* ===== INPUT & SELECT ===== */
+.form-group input,
+.form-group select {
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* ===== FOCUS EFFECT ===== */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #0b6b2d;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(11, 107, 45, 0.15);
+}
+
+/* ===== PLACEHOLDER ===== */
+.form-group input::placeholder {
+  color: #999;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn {
+  grid-column: 1 / -1;
+  height: 52px;
+  border: none;
+  background: #4004e7;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+/* ===== BUTTON HOVER ===== */
+.submit-btn:hover {
+  background: rgb(17, 17, 184);
+  transform: trgb(98, 0, 255)eY(-1px);
+}
+
+/* ===== TABLE SECTION ===== */
+.table-section {
+  margin-top: 45px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  .topbar {
+    padding: 15px;
+  }
+
+  .yellow-bar {
+    padding: 12px 18px;
+  }
+
+  .form-container {
+    padding: 25px;
+    margin-top: 25px;
+  }
+
+  .form-container h2 {
+    font-size: 26px;
+  }
+
+  #enrollmentForm {
+    grid-template-columns: 1fr;
+  }
+}
+.container {
+  width: 90%;
+  margin: 20px auto; 
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+
+  overflow-x: auto;
+}
+
+/* =========================
+   FILTERS
+========================= */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.left-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;/**/
+  flex: 1;
+}
+
+.left-info span {
+  font-weight: bold;
+  min-width: 200px;
+}
+
+select {
+  padding: 5px;
+}
+
+.left-info span b {
+  font-weight: normal;
+}
+/* =========================
+   BUTTON
+========================= */
+.enroll-btn {
+  background: #1dc331;
+  color: white;
+  padding: 6px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: auto;
+  margin-left: auto;
+}
+
+.enroll-btn:hover {
+  opacity: 0.85;
+}
+
+.btn-coe {
+  background: #1dc331;
+  color: white;
+  padding: 6px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+.enroll-message {
+  color: blue;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/* =========================
+   TABLE (FIXED ALIGNMENT)
+========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+th, td {
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background: #f0f0f0;
+  border-bottom: 2px solid #000;
+}
+
+/* =========================
+   MODAL
+========================= */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  background: #e6e6e6;
+  padding: 25px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cancel-btn {
+  background: #d22c2c;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.proceed-btn {
+  background: #1dc331;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* =========================
+   COE PAPER
+========================= */
+.paper {
+  width: 90%;
+  max-width: 850px;
+  margin: 20px auto;
+  border: 1px solid black;
+  padding: 20px 25px;
+  background: white;
+  box-sizing: border-box;
+}
+
+/* =========================
+   HEADER COE
+========================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 100px;
+}
+
+.header-center {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* =========================
+   INFO (FIXED ALIGNMENT)
+========================= */
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 15px;
+  font-size: 14px;
+  gap: 40px;
+}
+
+.info .left,
+.info .right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info span,
+.info p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+  body {
+    padding-top: 160px;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .paper {
+    padding: 15px;
+  }
+}
+.subject-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.subtitle {
+  margin: 0;
+  font-weight: bold;
+}
+
+
+
+#enrollMessage {
+  text-align: center;
+}
+
+.subject-header {
+  display: flex;
+  justify-content: space-between; /* Pushes items to opposite sides */
+  align-items: center;           /* Keeps them level horizontally */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.period-box {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the "Period:" label and the dropdown */
+}
+
+.period-box select {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

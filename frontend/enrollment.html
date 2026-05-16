@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollment Form</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assessment.css">
+  <link rel="stylesheet" href="enrollment.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="logo-title">
+        <img src="logo .png" alt="University Logo">
+
+        <div class="school-text">
+          <h2>Partido State University</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- YELLOW BAR -->
+    <div class="yellow-bar">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+
+  </header>
+
+  <!-- ===== ENROLLMENT FORM ===== -->
+  <div class="form-container">
+
+    <div class="form-icon">
+      <i class="fa-solid fa-graduation-cap"></i>
+    </div>
+
+    <h2>STUDENT ENROLLMENT FORM</h2>
+
+    <p class="subtitle">
+      Please provide accurate information in all fields.
+    </p>
+
+    <form id="enrollmentForm">
+
+      <!-- FIRST NAME -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-user"></i>
+          First Name
+        </label>
+
+        <input
+          type="text"
+          id="firstName"
+          placeholder="Enter first name"
+          required>
+      </div>
+
+      <!-- MIDDLE NAME -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-user"></i>
+          Middle Name
+        </label>
+
+        <input
+          type="text"
+          id="middleName"
+          placeholder="Enter middle name">
+      </div>
+
+      <!-- LAST NAME -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-user"></i>
+          Last Name
+        </label>
+
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Enter last name"
+          required>
+      </div>
+
+      <!-- DEPARTMENT -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-building"></i>
+          Department
+        </label>
+
+        <select id="departmentSelect" required>
+          <option value="">Select Department</option>
+          <option>College of Arts and Humanities (CAH)</option>
+          <option>College of Business and Management (CBM)</option>
+          <option>College of Education (CED)</option>
+          <option>College of Computational Science (CCS)</option>
+        </select>
+      </div>
+
+      <!-- PROGRAM -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-book"></i>
+          Program
+        </label>
+
+        <select id="program" required>
+          <option value="">Select Program</option>
+          <option>BS Information Technology</option>
+          <option>BS Computer Science</option>
+        </select>
+      </div>
+
+       <!-- SEMESTER -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-calendar"></i>
+          Semester
+        </label>
+
+        <select id="semester" required>
+          <option value="">Select Semester</option>
+          <option>1st Semester</option>
+          <option>2nd Semester</option>
+          <option>Summer</option>
+        </select>
+      </div>
+
+      <!-- ACADEMIC YEAR -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-school"></i>
+          Academic Year
+        </label>
+
+        <input
+          type="text"
+          id="academicYear"
+          placeholder="2025-2026"
+          required>
+      </div>
+
+      <!-- YEAR LEVEL -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-layer-group"></i>
+          Year Level
+        </label>
+
+        <select id="yearLevel" required>
+          <option value="">Select Year</option>
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+        </select>
+      </div>
+
+      <!-- SECTION -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-users"></i>
+          Section
+        </label>
+
+        <select id="section" required>
+          <option value="">Select Section</option>
+          <option>A</option>
+          <option>B</option>
+        </select>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="submit-btn">
+        <i class="fa-solid fa-paper-plane"></i>
+        Submit
+      </button>
+
+    </form>
+  </div>
+
+  <!-- ===== ASSESSMENT SECTION ===== -->
+  <section id="assessment" class="tab-content">
+
+    <div class="container">
+
+      <!-- TABLE -->
+      <table>
+
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>Units</th>
+            <th>Schedule</th>
+            <th>Instructor</th>
+            <th>Section</th>
+          </tr>
+        </thead>
+
+        <tbody id="scheduleTable"></tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="3" style="text-align:right; font-weight:bold;">
+              Total Units:
+            </td>
+
+            <td style="font-weight:bold;">
+              <span id="totalUnits">0</span>
+            </td>
+
+            <td colspan="3"></td>
+          </tr>
+        </tfoot>
+
+      </table>
+
+    </div>
+
+  </section>
+
+  <!-- ===== MODAL ===== -->
+  <div id="modalOverlay" class="overlay hidden">
+
+    <div class="modal">
+
+      <p class="modal-text">
+        <b>Are you sure you want to enroll?</b>
+        <br>
+        Click "Proceed" if yes.
+      </p>
+
+      <div class="modal-buttons">
+
+        <button
+          class="cancel-btn"
+          onclick="goBack()">
+          Cancel
+        </button>
+
+        <button
+          class="proceed-btn"
+          onclick="confirmEnroll()">
+          Proceed
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script src="enrollment.js"></script>
+  <script src="assessment.js"></script>
+
+</body>
+</html>
