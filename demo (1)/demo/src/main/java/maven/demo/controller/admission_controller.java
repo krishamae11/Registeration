@@ -42,3 +42,5 @@ public class admission_controller {
         return repo.save(student);
     }
 }
+
+
