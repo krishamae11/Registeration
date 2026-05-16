@@ -16,6 +16,9 @@ public class coe_admin {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "middle_name")
+    private String middleName;
+
     private String sex;
     private String department;
 
@@ -33,7 +36,7 @@ public class coe_admin {
     @Column(name = "dateenrolled")
     private String dateEnrolled;
 
-    private String sem;
+    private String semester;
 
     @Column(name = "academic_year")
     private String academicyear;
@@ -49,8 +52,12 @@ public class coe_admin {
     public String getYearLevel() { return yearLevel; }
     public boolean isValidated() { return validated; }
     public String getDateEnrolled() { return dateEnrolled; }
-    public String getSem() { return sem; }
+    public String getSem() { return semester; }
     public String getAcademicyear() { return academicyear; }
+
+    public String getMiddleName() {
+        return middleName;
+    }
 
     // --- SETTERS ---
     public void setId(Long id) { this.id = id; }
@@ -63,6 +70,10 @@ public class coe_admin {
     public void setYearLevel(String yearLevel) { this.yearLevel = yearLevel; }
     public void setValidated(boolean validated) { this.validated = validated; }
     public void setDateEnrolled(String dateEnrolled) { this.dateEnrolled = dateEnrolled; }
-    public void setSem(String sem) { this.sem = sem; }
+    public void setSem(String sem) { this.semester = sem; }
     public void setAcademicyear(String academicyear) { this.academicyear = academicyear; }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
 }
