@@ -1,3 +1,4 @@
+coe.js
 /* =========================
    GLOBAL RESET
 ========================= */
@@ -45,7 +46,7 @@ body {
   position: fixed;
   top: 80px;
   left: 0;
-  width: 100%;
+  width: 98%;
   z-index: 1999;
 
   display: flex;
