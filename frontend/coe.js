@@ -22,59 +22,165 @@ function toggleMenu() {
 // LOAD ADMISSION
 // =========================
 function loadAdmission() {
-  // Consistently using Student ID 15
-  fetch("http://localhost:1234/api/coestudentinfo/17")
+
+  const studentId = localStorage.getItem("currentStudentId");
+
+  if (!studentId) {
+    alert("No student found.");
+    return;
+  }
+
+  fetch(`http://localhost:6969/api/studentinfo`)
     .then(res => res.json())
+
     .then(data => {
 
-      console.log("API DATA:", data);
+      const student = data.find(
+        s => String(s.id) === String(studentId)
+      );
 
-      // ID and Name
-      document.getElementById("student_id").innerText = data.id ?? "";
+      if (!student) {
+        console.log("Student not found");
+        return;
+      }
 
-      const first = data.firstName ?? data.first_name ?? "";
-      const last  = data.lastName ?? data.last_name ?? "";
-      document.getElementById("First_name").innerText = `${last}, ${first}`.trim();
+      console.log("COE STUDENT:", student);
 
-      // Program and Dept
-      document.getElementById("course").innerText = data.program ?? data.course ?? "";
-      document.getElementById("department").innerText = data.department ?? "";
-      document.getElementById("courseYear").innerText = data.yearLevel ?? "";
+      // =========================
+      // DISPLAY INFO
+      // =========================
 
-      // 1. DYNAMIC DATE ENROLLED
-      const dateField = document.getElementById("enrollmentDate");
+      document.getElementById("student_id").innerText =
+        student.id ?? "";
+
+      const first = student.firstName ?? "";
+      const last  = student.lastName ?? "";
+
+      document.getElementById("First_name").innerText =
+        `${last}, ${first}`;
+
+      document.getElementById("course").innerText =
+        student.program ?? "";
+
+      document.getElementById("department").innerText =
+        student.department ?? "";
+
+      document.getElementById("courseYear").innerText =
+        student.yearLevel ?? "";
+
+      // =========================
+      // DATE ENROLLED
+      // =========================
+
+      const dateField =
+        document.getElementById("enrollmentDate");
+
       if (dateField) {
-        // Matches the 'dateEnrolled' field in your Java Entity
-        dateField.innerText = data.dateEnrolled ?? "Not Yet Enrolled";
+        dateField.innerText =
+          student.dateEnrolled ?? "Not Yet Enrolled";
       }
 
-      // 2. DYNAMIC PERIOD (NEW)
-      // This ensures the header also pulls from sem and academicyear columns
-      const periodField = document.getElementById("coePeriodDisplay");
-      if (periodField && data.sem && data.academicyear) {
-        periodField.innerText = `${data.sem} Semester AY ${data.academicyear}`;
+      // =========================
+      // PERIOD DISPLAY
+      // =========================
+
+      const periodField =
+        document.getElementById("coePeriodDisplay");
+
+      if (periodField) {
+
+        periodField.innerText =
+          `${student.semester || ""} AY ${student.academicYear || ""}`;
       }
+
+      // =========================
+      // FORMAT SECTION
+      // =========================
+
+      let prog = (student.program || "").trim();
+
+      if (prog === "BS Information Technology") {
+        prog = "BSIT";
+      }
+
+      // Example:
+      // "2nd Year" -> "2"
+      const yearNum =
+        student.yearLevel
+          ? student.yearLevel.charAt(0)
+          : "";
+
+      // Example:
+      // BSIT + 2 + A = BSIT2A
+      const formattedSectionForDB =
+        `${prog}${yearNum}${student.section || ""}`.trim();
+
+      // =========================
+      // FORMAT SEMESTER
+      // =========================
+
+      let semester =
+        (student.semester || "").trim();
+
+      if (semester === "1st Semester") {
+        semester = "1st";
+      }
+
+      if (semester === "2nd Semester") {
+        semester = "2nd";
+      }
+
+      const academicYear =
+        (student.academicYear || "").trim();
+
+      console.log("FORMATTED SECTION:", formattedSectionForDB);
+      console.log("ACADEMIC YEAR:", academicYear);
+      console.log("SEMESTER:", semester);
+
+      // =========================
+      // LOAD SCHEDULE
+      // =========================
+
+      loadSchedule(
+        formattedSectionForDB,
+        academicYear,
+        semester
+      );
 
     })
-    .catch(err => console.log("ADMISSION ERROR:", err));
+
+    .catch(err =>
+      console.log("ADMISSION ERROR:", err)
+    );
 }
 
 
 // =========================
 // LOAD SCHEDULE
 // =========================
-function loadSchedule() {
-  fetch("http://localhost:1234/api/coestudsched")
+function loadSchedule(section, academicYear, semester) {
+
+  fetch(
+    `http://localhost:6969/api/coestudsched/filter?section=${encodeURIComponent(section)}&academicYear=${encodeURIComponent(academicYear)}&semester=${encodeURIComponent(semester)}`
+  )
+
     .then(res => res.json())
+
     .then(data => {
 
-      let table = document.getElementById("scheduleTable");
-      if(!table) return;
+      console.log("SCHEDULE DATA:", data);
+
+      let table =
+        document.getElementById("scheduleTable");
+
+      if (!table) return;
+
       table.innerHTML = "";
 
       let total = 0;
 
       data.forEach(s => {
+
         table.innerHTML += `
           <tr>
             <td>${s.code}</td>
@@ -86,19 +192,25 @@ function loadSchedule() {
             <td>${s.section}</td>
           </tr>
         `;
+
         total += Number(s.units || 0);
+
       });
 
-      document.getElementById("totalUnits").innerText = total;
+      document.getElementById("totalUnits").innerText =
+        total;
 
     })
-    .catch(err => console.log("SCHEDULE ERROR:", err));
+
+    .catch(err =>
+      console.log("SCHEDULE ERROR:", err)
+    );
 }
+
 
 // =========================
 // AUTO LOAD
 // =========================
 window.onload = function () {
   loadAdmission();
-  loadSchedule();
 };
