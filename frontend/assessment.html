@@ -4,6 +4,28 @@
 <meta charset="UTF-8">
 <title>Assessment</title>
 <link rel="stylesheet" href="assessment.css">
+
+<style>
+/* =========================
+   BLUE ENROLL STATUS
+========================= */
+.enroll-status {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  display: none;
+}
+
+.enroll-status.success {
+  display: block;
+  background-color: #dbeafe;
+  color: #1e3a8a;
+  border: 1px solid #93c5fd;
+}
+</style>
+
 </head>
 
 <body>
@@ -55,7 +77,6 @@
           Validated:
           <b id="validated"></b>
         </span>
-
       </div>
 
       <!-- RIGHT BUTTON -->
@@ -66,6 +87,9 @@
       </button>
 
     </div>
+
+    <!-- ✅ BLUE STATUS MESSAGE ADDED HERE -->
+    <div id="enrollStatus" class="enroll-status"></div>
 
     <!-- MESSAGE -->
     <p id="enrollMessage" class="enroll-message"></p>
