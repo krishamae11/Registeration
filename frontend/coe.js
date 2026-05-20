@@ -19,6 +19,22 @@ function toggleMenu() {
 
 
 // =========================
+// NAME FORMAT HELPER
+// =========================
+function capitalizeWords(str) {
+  if (!str) return "";
+  return str
+    .toLowerCase()
+    .split(" ")
+    .filter(Boolean)
+    .map(word =>
+      word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join(" ");
+}
+
+
+// =========================
 // LOAD ADMISSION
 // =========================
 function loadAdmission() {
@@ -30,21 +46,14 @@ function loadAdmission() {
     return;
   }
 
-  fetch(`http://localhost:6969/api/studentinfo`)
+  fetch(`http://localhost:6969/api/coestudentinfo/${studentId}`)
     .then(res => res.json())
 
-    .then(data => {
-
-      const student = data.find(
-        s => String(s.id) === String(studentId)
-      );
-
-      if (!student) {
-        console.log("Student not found");
-        return;
-      }
+    .then(student => {
 
       console.log("COE STUDENT:", student);
+
+      if (!student) return;
 
       // =========================
       // DISPLAY INFO
@@ -53,14 +62,32 @@ function loadAdmission() {
       document.getElementById("student_id").innerText =
         student.id ?? "";
 
-      const first = student.firstName ?? "";
-      const last  = student.lastName ?? "";
+      // =========================
+      // FIXED NAME FORMAT
+      // =========================
+      const first = capitalizeWords(student.firstName ?? "");
+      const last = capitalizeWords(student.lastName ?? "");
+
+      const middleRaw =
+        student.middleName ??
+        student.middle_name ??
+        "";
+
+      const middleInitial =
+        middleRaw.trim()
+          ? middleRaw.trim().charAt(0).toUpperCase() + "."
+          : "";
 
       document.getElementById("First_name").innerText =
-        `${last}, ${first}`;
+        middleInitial
+          ? `${last}, ${first} ${middleInitial}`
+          : `${last}, ${first}`;
 
+      // =========================
+      // COURSE FIX
+      // =========================
       document.getElementById("course").innerText =
-        student.program ?? "";
+        student.course ?? student.program ?? "";
 
       document.getElementById("department").innerText =
         student.department ?? "";
@@ -71,7 +98,6 @@ function loadAdmission() {
       // =========================
       // DATE ENROLLED
       // =========================
-
       const dateField =
         document.getElementById("enrollmentDate");
 
@@ -83,55 +109,45 @@ function loadAdmission() {
       // =========================
       // PERIOD DISPLAY
       // =========================
-
       const periodField =
         document.getElementById("coePeriodDisplay");
 
+      const semesterRaw =
+        student.semester ?? student.sem ?? "";
+
+      const academicYearRaw =
+        student.academicyear ??
+        student.academicYear ??
+        student.academic_year ??
+        "";
+
       if (periodField) {
-
         periodField.innerText =
-          `${student.semester || ""} AY ${student.academicYear || ""}`;
+          `${semesterRaw} AY ${academicYearRaw}`;
       }
 
       // =========================
-      // FORMAT SECTION
+      // SECTION (FIXED)
       // =========================
-
-      let prog = (student.program || "").trim();
-
-      if (prog === "BS Information Technology") {
-        prog = "BSIT";
-      }
-
-      // Example:
-      // "2nd Year" -> "2"
-      const yearNum =
-        student.yearLevel
-          ? student.yearLevel.charAt(0)
-          : "";
-
-      // Example:
-      // BSIT + 2 + A = BSIT2A
       const formattedSectionForDB =
-        `${prog}${yearNum}${student.section || ""}`.trim();
+        (student.section ?? "").trim();
 
       // =========================
-      // FORMAT SEMESTER
+      // SEMESTER (SAFE)
       // =========================
-
       let semester =
-        (student.semester || "").trim();
+        (student.semester ?? "").trim();
 
-      if (semester === "1st Semester") {
+      if (semester.toLowerCase().includes("1st")) {
         semester = "1st";
       }
 
-      if (semester === "2nd Semester") {
+      if (semester.toLowerCase().includes("2nd")) {
         semester = "2nd";
       }
 
       const academicYear =
-        (student.academicYear || "").trim();
+        (academicYearRaw ?? "").trim();
 
       console.log("FORMATTED SECTION:", formattedSectionForDB);
       console.log("ACADEMIC YEAR:", academicYear);
@@ -140,12 +156,19 @@ function loadAdmission() {
       // =========================
       // LOAD SCHEDULE
       // =========================
-
-      loadSchedule(
-        formattedSectionForDB,
-        academicYear,
+      if (
+        formattedSectionForDB &&
+        academicYear &&
         semester
-      );
+      ) {
+        loadSchedule(
+          formattedSectionForDB,
+          academicYear,
+          semester
+        );
+      } else {
+        console.log("Skipping schedule load (missing data)");
+      }
 
     })
 
@@ -197,8 +220,12 @@ function loadSchedule(section, academicYear, semester) {
 
       });
 
-      document.getElementById("totalUnits").innerText =
-        total;
+      const totalUnitsEl =
+        document.getElementById("totalUnits");
+
+      if (totalUnitsEl) {
+        totalUnitsEl.innerText = total;
+      }
 
     })
 
