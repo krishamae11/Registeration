@@ -14,6 +14,7 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
+
 <body>
 
   <!-- ===== HEADER ===== -->
@@ -169,19 +170,24 @@
       </div>
 
       <!-- SECTION -->
-      <div class="form-group">
-        <label>
-          <i class="fa-solid fa-users"></i>
-          Section
-        </label>
+<div class="form-group">
+  <label>
+    <i class="fa-solid fa-users"></i>
+    Section
+  </label>
 
-        <select id="section" required>
-          <option value="">Select Section</option>
-          <option>A</option>
-          <option>B</option>
-        </select>
-      </div>
+  <input
+  type="text"
+  id="generatedSection"
+  name="fake-section"
+  readonly
+  autocomplete="new-password"
+  placeholder="Not assigned yet"
+  value=""
+>
+</div>
 
+  
       <!-- SUBMIT -->
       <button type="submit" class="submit-btn">
         <i class="fa-solid fa-paper-plane"></i>
@@ -191,48 +197,24 @@
     </form>
   </div>
 
-  <!-- ===== ASSESSMENT SECTION ===== -->
-  <section id="assessment" class="tab-content">
+  <div id="noSlotModal" class="overlay hidden">
 
-    <div class="container">
+  <div class="modal">
 
-      <!-- TABLE -->
-      <table>
+    <p class="modal-text">
+      <b>No slots available anymore.</b><br>
+      Both Section A and B are full (20 students each).
+    </p>
 
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Subject</th>
-            <th>Description</th>
-            <th>Units</th>
-            <th>Schedule</th>
-            <th>Instructor</th>
-            <th>Section</th>
-          </tr>
-        </thead>
+    <button onclick="document.getElementById('noSlotModal').classList.add('hidden')">
+      OK
+    </button>
 
-        <tbody id="scheduleTable"></tbody>
+  </div>
 
-        <tfoot>
-          <tr>
-            <td colspan="3" style="text-align:right; font-weight:bold;">
-              Total Units:
-            </td>
+</div>
 
-            <td style="font-weight:bold;">
-              <span id="totalUnits">0</span>
-            </td>
-
-            <td colspan="3"></td>
-          </tr>
-        </tfoot>
-
-      </table>
-
-    </div>
-
-  </section>
-
+ 
   <!-- ===== MODAL ===== -->
   <div id="modalOverlay" class="overlay hidden">
 
@@ -253,10 +235,10 @@
         </button>
 
         <button
-          class="proceed-btn"
-          onclick="confirmEnroll()">
-          Proceed
-        </button>
+  class="proceed-btn"
+  onclick="submitEnrollment()">
+  Proceed
+</button>
 
       </div>
 
@@ -264,9 +246,74 @@
 
   </div>
 
+
+<!-- EXISTING STUDENT MODAL -->
+<div id="existingStudentModal" class="overlay hidden">
+
+  <div class="modal">
+
+    <p class="modal-text">
+      <b>Student is already registered.</b>
+      <br><br>
+      Would you like to review your information
+      or proceed directly to assessment?
+    </p>
+
+    <div class="modal-buttons">
+
+      <button
+        class="cancel-btn"
+        onclick="reviewExistingData()">
+        Review Info
+      </button>
+
+      <button
+        class="proceed-btn"
+        onclick="proceedExistingAssessment()">
+        Proceed
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+  
+<!-- REVIEW MODAL -->
+<div id="reviewModal" class="overlay hidden">
+
+  <div class="modal">
+
+    <p class="modal-text">
+      <b>Student data has been registered successfully.</b>
+      <br><br>
+      Would you like to review your information first
+      or proceed directly to assessment?
+    </p>
+
+    <div class="modal-buttons">
+
+      <button
+        class="cancel-btn"
+        onclick="reviewData()">
+        Review Data
+      </button>
+
+      <button
+        class="proceed-btn"
+        onclick="proceedAssessment()">
+        Proceed
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
   <!-- JAVASCRIPT -->
   <script src="enrollment.js"></script>
-  <script src="assessment.js"></script>
 
 </body>
 </html>
